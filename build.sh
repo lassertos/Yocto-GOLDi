@@ -4,9 +4,7 @@ temp="${STARTTIME%\"}"
 STARTTIME="${temp#\"}"
 export STARTTIME
 export BB_ENV_EXTRAWHITE="$BB_ENV_EXTRAWHITE STARTTIME"
-echo $(bitbake -e | grep DATETIME= | cut -d= -f2)
-echo $(bitbake -e | grep STARTTIME= | cut -d= -f2)
-#bitbake core-image-minimal-goldi update-bundle
+bitbake core-image-minimal-goldi update-bundle
 DDI=$(bitbake -e | grep DEPLOY_DIR_IMAGE= | cut -d= -f2)
 temp="${DDI%\"}"
 DDI="${temp#\"}"
