@@ -1,3 +1,5 @@
+#loads the content of the submodules, adds the layers and copies local.conf
+git submodule update --init
 source oe-init-build-env
 bitbake-layers add-layer "../meta-rauc"
 bitbake-layers add-layer "../meta-goldi"
