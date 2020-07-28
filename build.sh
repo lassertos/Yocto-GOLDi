@@ -8,10 +8,10 @@ UPDATE_DEPLOY_DIR=/var/www/html/updates/
 #collect starttime and deploydir location
 STARTTIME=$(bitbake -e | grep DATETIME= | cut -d= -f2)
 temp="${STARTTIME%\"}"
+STARTTIME="${temp#\"}"
 DEPLOY_DIR_IMAGE=$(bitbake -e | grep DEPLOY_DIR_IMAGE= | cut -d= -f2)
 temp="${DEPLOY_DIR_IMAGE%\"}"
 DEPLOY_DIR_IMAGE="${temp#\"}"
-STARTTIME="${temp#\"}"
 
 #export starttime for use with recipes
 export STARTTIME
