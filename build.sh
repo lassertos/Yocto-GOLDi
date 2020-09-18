@@ -20,5 +20,4 @@ bitbake core-image-minimal-goldi update-bundle
 
 #copy raucb file to deploydir and create update-info
 ls $DEPLOY_DIR_IMAGE | grep update-bundle-${MACHINE}- | xargs -I '{}' cp $DEPLOY_DIR_IMAGE/{} ${UPDATE_DEPLOY_DIR}update.raucb
-echo bootloader-update:0 > ${UPDATE_DEPLOY_DIR}update-info
-rauc info ${UPDATE_DEPLOY_DIR}update.raucb >> /var/www/html/updates/update-info
+rauc info ${UPDATE_DEPLOY_DIR}update.raucb > /var/www/html/updates/update-info

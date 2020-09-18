@@ -10,3 +10,6 @@
 [submodule "meta-rauc"]
 	path = meta-rauc
 	url = https://github.com/rauc/meta-rauc.git
+[submodule "meta-microcontroller"]
+	path = meta-microcontroller
+	url = https://github.com/schnitzeltony/meta-microcontroller.git
