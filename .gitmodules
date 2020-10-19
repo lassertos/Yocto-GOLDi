@@ -1,6 +1,6 @@
 [submodule "meta-goldi"]
 	path = meta-goldi
-	url = https://github.com/lassertos/meta-goldi.git
+	url = git@github.com:lassertos/meta-goldi.git
 [submodule "meta-openembedded"]
 	path = meta-openembedded
 	url = https://github.com/openembedded/meta-openembedded.git
