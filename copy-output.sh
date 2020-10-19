@@ -14,10 +14,6 @@ DEPLOY_DIR_IMAGE=$(bitbake -e | grep DEPLOY_DIR_IMAGE= | cut -d= -f2)
 temp="${DEPLOY_DIR_IMAGE%\"}"
 DEPLOY_DIR_IMAGE="${temp#\"}"
 
-#export commitnumber for use with recipes
-export COMMITNR
-export BB_ENV_EXTRAWHITE="$BB_ENV_EXTRAWHITE COMMITNR"
-bitbake core-image-minimal-goldi update-bundle
-
-cd ..
-sudo ./copy-output.sh
+#copy raucb file to deploydir and create update-info
+ls $DEPLOY_DIR_IMAGE | grep update-bundle-${MACHINE}- | xargs -I '{}' cp $DEPLOY_DIR_IMAGE/{} ${UPDATE_DEPLOY_DIR}update.raucb
+tmp/deploy/tools/rauc -c tmp/deploy/tools/system.conf info ${UPDATE_DEPLOY_DIR}update.raucb > ${UPDATE_DEPLOY_DIR}update-info
