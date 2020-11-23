@@ -1,19 +1,21 @@
 #!/bin/bash
 
-#init build environment
-source oe-init-build-env
-
-#set variables according to local configuration
-MACHINE=raspberrypi3
 UPDATE_DEPLOY_DIR=/var/www/html/updates/
 
-#collect commitnumber and deploydir location
-COMMITNR=$(git rev-parse HEAD)
-temp="${COMMITNR%\"}"
-DEPLOY_DIR_IMAGE=$(bitbake -e | grep DEPLOY_DIR_IMAGE= | cut -d= -f2)
-temp="${DEPLOY_DIR_IMAGE%\"}"
-DEPLOY_DIR_IMAGE="${temp#\"}"
-
-#copy raucb file to deploydir and create update-info
-ls $DEPLOY_DIR_IMAGE | grep update-bundle-${MACHINE}- | xargs -I '{}' cp $DEPLOY_DIR_IMAGE/{} ${UPDATE_DEPLOY_DIR}update.raucb
-tmp/deploy/tools/rauc -c tmp/deploy/tools/system.conf info ${UPDATE_DEPLOY_DIR}update.raucb > ${UPDATE_DEPLOY_DIR}update-info
+while getopts "cp" opt; do
+  	case $opt in
+    	c)
+      		cp $2/update-bundle-CU-$3.raucb ${UPDATE_DEPLOY_DIR}update-CU-$3.raucb
+      		cp $2/image-CU-$3.wic.bz2 ${UPDATE_DEPLOY_DIR}image-CU-$3.wic.bz2
+      		tmp/deploy/tools/rauc -c tmp/deploy/tools/system.conf info ${UPDATE_DEPLOY_DIR}update-CU-$3.raucb > ${UPDATE_DEPLOY_DIR}update-info-CU-$3
+      		;;
+    	p)
+      		cp $2/update-bundle-PS-$3.raucb ${UPDATE_DEPLOY_DIR}update-PS-$3.raucb
+      		cp $2/image-PS-$3.wic.bz2 ${UPDATE_DEPLOY_DIR}image-PS-$3.wic.bz2
+      		tmp/deploy/tools/rauc -c tmp/deploy/tools/system.conf info ${UPDATE_DEPLOY_DIR}update-PS-$3.raucb > ${UPDATE_DEPLOY_DIR}update-info-PS-$3
+      		;;
+    	\?)
+      		echo "Invalid option: -$OPTARG" >&2
+      		;;
+  	esac
+done
