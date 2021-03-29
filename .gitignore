@@ -20,6 +20,11 @@ hob-image-*.bb
 !meta-yocto
 !meta-yocto-bsp
 !meta-yocto-imported
+!meta-goldi
+!meta-rauc
+!meta-openembedded
+!meta-raspberrypi
+!meta-microcontroller
 /documentation/*/eclipse/
 /documentation/*/*.html
 /documentation/*/*.pdf
