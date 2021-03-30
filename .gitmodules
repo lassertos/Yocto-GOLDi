@@ -1,0 +1,20 @@
+[submodule "meta-microcontroller"]
+	path = meta-microcontroller
+	url = https://github.com/schnitzeltony/meta-microcontroller.git
+	branch = dunfell
+[submodule "meta-openembedded"]
+	path = meta-openembedded
+	url = https://github.com/openembedded/meta-openembedded
+	branch = dunfell
+[submodule "meta-rauc"]
+	path = meta-rauc
+	url = https://github.com/rauc/meta-rauc
+	branch = dunfell
+[submodule "meta-raspberrypi"]
+	path = meta-raspberrypi
+	url = https://github.com/agherzan/meta-raspberrypi.git
+	branch = dunfell
+[submodule "meta-goldi"]
+	path = meta-goldi
+	url = https://github.com/lassertos/meta-goldi.git
+	branch = dunfell
